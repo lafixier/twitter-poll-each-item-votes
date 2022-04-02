@@ -1,3 +1,11 @@
+main();
+const observer = new MutationObserver(main);
+const targetNode = document.body;
+const config = {
+    attributes: true,
+};
+observer.observe(targetNode, config);
+
 function main() {
     const res = [];
     for (let e of document.getElementsByClassName("css-1dbjc4n")) {
