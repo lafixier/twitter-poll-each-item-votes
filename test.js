@@ -66,7 +66,6 @@ function getVotesAndItems(tweets) {
 }
 
 function insertEachItemVotes2Tweets(votes, items) {
-    console.log("www");
     if (votes !== NaN) {
         for (const item of items) {
             if (
