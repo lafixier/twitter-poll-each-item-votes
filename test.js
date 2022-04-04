@@ -21,6 +21,7 @@ function main() {
 function getVotesAndItems(tweets) {
     for (let i = 0; i < tweets.length; i++) {
         const tweet = tweets[i];
+        console.log(tweet);
         if (tweet.innerHTML.indexOf(`testid="cardPoll"`) !== -1) {
             if (
                 tweet.children[0].children[0].children[0].children[0]
@@ -55,6 +56,25 @@ function getVotesAndItems(tweets) {
                         .children[0].children[0].children;
                 const votes = Number(
                     tweet.children[0].children[0].children[0].children[0].children[0].children[0].children[2].children[1].children[0].children[0].children[0].children[0].children[0].children[1].children[0].children[0].children[0].innerText
+                        .replaceAll(",", "")
+                        .replaceAll(" votes", "")
+                        .replaceAll("票", "")
+                );
+                insertEachItemVotes2Tweets(votes, items);
+            } else if (
+                tweet.children[0].children[0].children[0].children[0]
+                    .children[0].children[0].children[1].children[1].children[1]
+                    .children[2].children[0].children[0].children[0].children[0]
+                    .children[0].children[0].children !== undefined
+            ) {
+                const items =
+                    tweet.children[0].children[0].children[0].children[0]
+                        .children[0].children[0].children[1].children[1]
+                        .children[1].children[2].children[0].children[0]
+                        .children[0].children[0].children[0].children[0]
+                        .children;
+                const votes = Number(
+                    tweet.children[0].children[0].children[0].children[0].children[0].children[0].children[1].children[1].children[1].children[2].children[0].children[0].children[0].children[0].children[0].children[1].children[0].children[0].children[0].innerText
                         .replaceAll(",", "")
                         .replaceAll(" votes", "")
                         .replaceAll("票", "")
